@@ -49,10 +49,8 @@ void Mutation(std::vector<std::pair<double, double>>& individuals) {
         double pos = dis(gen);
         if (pos < 0.25) {
             // do mutation
-            x = x * dis(gen);
-            x = x < -2 || x > 2 ? std::fmod(x, 2) : x;
-            y = y * dis(gen);
-            y = y < -2 || y > 2 ? std::fmod(y, 2) : y;
+            x = std::fmod(x * dis(gen), 2);
+            y = std::fmod(y * dis(gen), 2);
         }
     }
 }
@@ -102,8 +100,8 @@ void Genetic_Search() {
     FillTable(individuals);
 
     while (generation_num < 11) {
-        Crossover(individuals);
         Mutation(individuals);
+        Crossover(individuals);
         FillTable(individuals);
     }
 
