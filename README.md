@@ -1,6 +1,6 @@
 # Лабороторная работа №4
 ### Результат работы программы
-![cache](screenshots/results.png) 
+![cache](screenshots/new_results.png)
 
 ### График функции
 ![cache](screenshots/graphic.png)
