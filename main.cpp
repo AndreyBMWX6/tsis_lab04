@@ -24,7 +24,7 @@ std::mt19937 gen2(rd2());
 std::uniform_real_distribution<double> dis2(0, 1);
 
 double get_func_value(double x, double y) {
-    return cos(x) * cos(y) * exp(y / 2);
+    return sin(x) * exp(-(x * x) - (y * y));
 }
 
 void Crossover(std::vector<std::pair<double, double>>& individuals) {
@@ -47,7 +47,7 @@ void Mutation(std::vector<std::pair<double, double>>& individuals) {
     for (auto& [x,y] : individuals) {
         // posibility mutation
         double pos = dis(gen);
-        if (pos < 0.25) {
+        if (pos < 0.3) {
             // do mutation
             x = std::fmod(x * dis(gen), 2);
             y = std::fmod(y * dis(gen), 2);
@@ -99,7 +99,7 @@ void Genetic_Search() {
     }
     FillTable(individuals);
 
-    while (generation_num < 11) {
+    while (generation_num < 51) {
         Mutation(individuals);
         Crossover(individuals);
         FillTable(individuals);
